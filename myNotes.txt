@@ -1,0 +1,37 @@
+/*---------------------------------------------------------------------------------------------
+                                      INSTALL
+----------------------------------------------------------------------------------------------*/
+npm install ethers hardhat ethereum-waffle chai
+@nomiclabs/hardhat-waffle @nomiclabs/hardhat-ethers web3modal 
+@openzeppelin/contracts ipfs-http-client axios
+
+npm install add -D tailwindcss@latest postcss@latest autoprefixer@latest
+npx tailwindcss init -p
+
+open zeppelin tiene los smart contracts 
+
+Hardhat config file hay que cambirla al inicio del proyecto
+
+/*----------------------------------------------------------------------------------------------
+                                       TEST AND DEPLOY
+----------------------------------------------------------------------------------------------*/
+
+TEST: npx hardhat test - it will locate the test folder and run the script
+
+RUN LOCAL NODE: npx hardhat node
+
+DEPLOYING: npx hardhat run scripts/deploy.js --network localhost
+DEPLOYING: npx hardhat run scripts/deploy.js --network rinkeby
+
+
+rinkeby
+  	export const marketAddress = "0xd435F274192F941AF0078609722049bee80F1a0D" 
+  	export const nftAddress = "0x4faE6326b3E0ea4aeca3BD0B428bb064f32D9a0B"
+	
+  	export const marketAddress = "0xfB38b6a3D9cd1a2384e4581649d85BF771D9F0bD" 
+  	export const nftAddress = "0xf71b93e171F65379D3DaEE93e3b681ef56746a00"
+	local
+	
+  	export const marketAddress = "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82" 
+  	export const nftAddress = "0x9A676e781A523b5d0C0e43731313A708CB607508"
+	
