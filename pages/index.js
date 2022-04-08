@@ -24,6 +24,9 @@ export default function Home() {
 		const connection = await web3Modal.connect();
 		const provider = await new ethers.providers.Web3Provider(connection);
 
+		let accounts = await provider.listAccounts();
+		console.log(accounts);
+
 		// Contracts
 		const tokenContract = new ethers.Contract(nftAddress, NFT.abi, provider);
 		const marketContract = new ethers.Contract(marketAddress, Market.abi, provider);
@@ -99,25 +102,26 @@ export default function Home() {
 	}
 
 	return (
-		<div className='flex justify-center'>
-			<div className='px-4' style={{maxWidth: '1600px'}}>
+		<div>
+			<h1 className='pt-4 text-3xl font-bold italic hover:opacity-80'>Available NFTs</h1>
+			<div className='flex justify-center px-4' style={{maxWidth: '1600px'}}>
 				<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-4'>
 					{nfts.map((nft, i) => (
-						<div key={i} className='border shadow rounded-lg overflow-hidden'>
-							<img src={nft.image} alt='nft' />
+						<div key={i} className=' h-full border shadow rounded-lg overflow-hidden'>
+							<img width='330' height='300' className=' h-80' src={nft.image} alt='nft' />
 
 							<div className='p-4'>
-								<p style={{height: '64px'}} className='text-3xl font-semibold'>
+								<p style={{height: '64px'}} className='text-2xl font-semibold'>
 									{nft.name}
 								</p>
 
-								<div style={{height: '72px', overflow: 'hidden'}}>
-									<p className='text-gray-500 italic'>{nft.description}</p>
+								<div style={{overflow: 'hidden'}}>
+									<p className='text-gray-400 italic'>{nft.description}</p>
 								</div>
 							</div>
 
-							<div className='p-4 bg-black items-center'>
-								<p className='text-3xl mb-4 font-bold text-white'>{nft.price} ETH</p>
+							<div className='p-4 bg-black '>
+								<p className='text-2xl mb-4 font-bold text-white'>{nft.price} ETH</p>
 
 								<button
 									className='w-full bg-purple-500 text-white font-bold py-3 px-12 rounded-lg'

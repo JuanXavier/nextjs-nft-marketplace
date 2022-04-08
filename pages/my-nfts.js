@@ -66,15 +66,17 @@ export default function MyAssets() {
 	return (
 		<div>
 			<h1 className='pt-4 text-3xl font-bold italic hover:opacity-80'>My NFTS</h1>
-			<div className='px-4' style={{maxWidth: '1600px'}}>
+			<div className=' flex justify-center px-4' style={{maxWidth: '1600px'}}>
 				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4'>
 					{nfts.map((nft, i) => (
-						<div key={i} className='border shadow rounded-lg overflow-hidden'>
-							<img src={nft.image} alt='img' />
+						<div key={i} className='h-full border shadow rounded-lg overflow-hidden'>
+							<img width='300' height='300' className='h-80' src={nft.image} alt='img' />
+
 							<div className='p-4'>
 								<p className='text-2xl font-semibold mb-3'>{nft.name}</p>
+
 								<div style={{/*height: '72px'*/ overflow: 'hidden'}}>
-									<p className='text-gray-600 italic '>{nft.description}</p>
+									<p className='text-gray-400 italic '>{nft.description}</p>
 								</div>
 							</div>
 							<div className='p-4 bg-black'>

@@ -22,7 +22,6 @@ export default function MintItem() {
 		description: '',
 	});
 
-	// For being able to use different pages
 	const router = useRouter();
 
 	/*------------Update files in our form for IPFS-----------------*/

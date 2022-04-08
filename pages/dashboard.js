@@ -23,7 +23,7 @@ export default function AccountDashboard() {
 		const provider = new ethers.providers.Web3Provider(connection);
 
 		const signer = provider.getSigner();
-		console.log(await provider.listAccounts());
+		let account = (await provider.listAccounts()).toString();
 
 		const tokenContract = new ethers.Contract(nftAddress, NFT.abi, provider);
 		const marketContract = new ethers.Contract(marketAddress, Market.abi, signer);
@@ -68,24 +68,22 @@ export default function AccountDashboard() {
 
 	return (
 		<div>
-			<h1 className='pt-4 text-3xl font-bold italic hover:opacity-80'>
-				My minted Tokens
-			</h1>
-			<div className='px-4' style={{maxWidth: '1600px'}}>
+			<h1 className='pt-4 text-3xl font-bold italic hover:opacity-80'>My minted NFTs</h1>
+			<div className='flex justify-center px-6' style={{maxWidth: '1600px'}}>
 				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4'>
 					{nfts.map((nft, i) => (
-						<div key={i} className='border shadow rounded-lg overflow-hidden'>
-							<img src={nft.image} alt='nft' />
+						<div key={i} className='h-full border shadow rounded-lg overflow-hidden'>
+							<img width='300' height='300' className='h-80' src={nft.image} alt='nft' />
 							<div className='p-4'>
-								<p style={{height: '64px'}} className='text-3x1 font-semibold'>
+								<p style={{height: '64px'}} className='text-2xl font-semibold'>
 									{nft.name}
 								</p>
-								<div style={{height: '72px', overflow: 'hidden'}}>
-									<p className='text-gray-400'>{nft.description}</p>
+								<div style={{overflow: 'hidden'}}>
+									<p className='text-gray-400 italic'>{nft.description}</p>
 								</div>
 							</div>
 							<div className='p-4 bg-black'>
-								<p className='text-3xl mb-4 font-bold text-white'>{nft.price} ETH</p>
+								<p className='text-1xl mb-4 font-bold text-white'>{nft.price} ETH</p>
 							</div>
 						</div>
 					))}
